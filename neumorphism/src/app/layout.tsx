@@ -14,25 +14,37 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
-  // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    document.documentElement.classList.add('dark')
-  } else {
-    document.documentElement.classList.remove('dark')
+  const mediaQueryLlistener = (e: MediaQueryListEvent) => {
+    if (localStorage.theme === 'system') {
+      if (e.matches) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    }
+  }
+  if (typeof window !== 'undefined') {
+    document.addEventListener("load",() => {
+      if(!("theme" in localStorage) || localStorage.theme === "system"){
+        if(window.matchMedia('(prefers-color-scheme: dark').matches){
+          document.documentElement.classList.add('dark')
+        }
+        localStorage.setItem("theme","system")
+      }else if(localStorage.theme === "dark"){
+        localStorage.theme === "dark"
+      }else {
+        document.documentElement.classList.remove("dark")
+      }
+      window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",mediaQueryLlistener)
+      // https://zenn.dev/azukiazusa/articles/bee71756d66679 も参考になったけど採用しなかった
+    })    
   }
 
-  // Whenever the user explicitly chooses light mode
-  localStorage.theme = 'light'
-
-  // Whenever the user explicitly chooses dark mode
-  localStorage.theme = 'dark'
-
-  // Whenever the user explicitly chooses to respect the OS preference
-  localStorage.removeItem('theme')
   return (
     <html lang="en">
       <body className={inter.className}>{children}</body>
     </html>
   )
 }
+
+// https://azukiazusa.dev/blog/tailwind-css-dark-mode-system-light-dark/ の方を採用
