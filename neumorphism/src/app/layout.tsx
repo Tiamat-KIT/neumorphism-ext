@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+/* import { Inter } from 'next/font/google' */
+import localFont from "next/font/local"
 import './globals.css'
-const inter = Inter({ subsets: ['latin'] })
+import Header from './components/ui/NavHeader'
+/* const inter = Inter({ subsets: ['latin'] }) */
+
+const myFont = localFont(
+  { src: '/../../public/font/RocknRollOne-Regular.ttf',weight: "400"},
+)
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -39,8 +45,12 @@ export default function RootLayout({
     })
   }
   return (
-    <html lang="en">
-      <body className="max-h-screen bg-[url('/bg/CoolSky.jpg')] dark:bg-[url('/bg/RoyalBlue.jpg')]	">{children}</body>
+    <html lang="ja">
+      <body /* className="bg-[url('/bg/CoolSky.jpg')] bg-red-500 dark:bg-[url('/bg/RoyalBlue.jpg')]" */ 
+        className={`bg-pink-400 dark:bg-[url('/bg/RoyalBlue.jpg')] bg-cover ${myFont.className} ${myFont.style.fontWeight}`}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

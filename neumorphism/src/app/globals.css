@@ -17,7 +17,11 @@
 */
 
 @layer base {
-  .glass-body {@apply bg-white/30 backdrop-blur-sm border-t border-l border-slate-400 rounded-lg shadow-lg}
-  button {@apply font-bold p-1 border-t border-l border-gray-300 rounded-lg bg-blue-300	shadow-lg hover:shadow-inner hover:bg-white/30}
+  header {@apply w-1/3 mx-auto text-center w-3/4 rounded-md bg-violet-400 dark:bg-violet-300/30 backdrop-blur-sm}
+  .glass-body {@apply w-1/3 bg-white/30 backdrop-blur-sm border-t border-l border-slate-400 rounded-lg shadow-lg;}
+  .no-border-glass-body {@apply w-1/3 bg-white/30 backdrop-blur-sm shadow-lg;}
+  h1{@apply text-2xl font-bold dark:text-white;}
+  button {@apply font-extrabold p-1 border-t border-l border-gray-300 rounded-full shadow-lg hover:shadow-inner hover:bg-white/30;}
+  .blue-button {@apply font-bold p-1 border-t border-l border-gray-300 rounded-full bg-blue-300	shadow-lg hover:shadow-inner hover:bg-white/30;}
+  select {@apply rounded-md dark:bg-gray-600 dark:text-white appearance-none text-center divide-black;}
 }
-
