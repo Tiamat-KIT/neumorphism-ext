@@ -1,7 +1,9 @@
 export default function SubmitForm(){
     return (
-        <form className="relative">
-          <input className="p-5 text-2xl w-full rounded-full resize-none break-all dark:bg-slate-500" inputMode="text"/>
+        <form>
+          <div className="w-full rounded-full bg-white dark:bg-slate-500">
+            <textarea wrap="hard" autoComplete="on" autoCorrect="on" className="dark:bg-slate-500 text-2xl resize-none" inputMode="text"/>
+         </div>
           <button className="rotate-180 p-3 text-3xl absolute bottom-1 right-4 bg-white/10">✐</button>
         </form>
     )
