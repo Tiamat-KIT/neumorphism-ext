@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -37,12 +36,11 @@ export default function RootLayout({
       }
       window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",mediaQueryLlistener)
       // https://zenn.dev/azukiazusa/articles/bee71756d66679 も参考になったけど採用しなかった
-    })    
+    })
   }
-
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="max-h-screen bg-[url('/bg/CoolSky.jpg')] dark:bg-[url('/bg/RoyalBlue.jpg')]	">{children}</body>
     </html>
   )
 }

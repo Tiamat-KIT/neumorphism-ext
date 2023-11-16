@@ -8,7 +8,7 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-  
+    
   },
   plugins: [],
 }
